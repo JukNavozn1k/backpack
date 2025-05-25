@@ -150,3 +150,23 @@ def test_random_small_instances():
             f"Random test failed sel: weights={weights}, values={values}, "
             f"cap={capacity}, got {sel_bp}, expected {sel_bf}"
         )
+
+
+@pytest.mark.parametrize("weights, values, capacity, expected_exception", [
+    # несовпадение длины списков
+    ([1, 2], [3], 5, ValueError),
+    # отрицательная вместимость
+    ([1, 2, 3], [10, 20, 30], -1, ValueError),
+    # отрицательный вес
+    ([-1, 2], [10, 20], 5, ValueError),
+    # отрицательная ценность
+    ([1, 2], [10, -5], 5, ValueError),
+    # нецелочисленные значения
+    ([1.5, 2], [10, 20], 5, TypeError),
+    ([1, 2], [10, '20'], 5, TypeError),
+    ('not a list', [10, 20], 5, TypeError),
+    ([1, 2], [10, 20], 'five', TypeError),
+])
+def test_backpack_validation_errors(weights, values, capacity, expected_exception):
+    with pytest.raises(expected_exception):
+        backpack(weights, values, capacity)
