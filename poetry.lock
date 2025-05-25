@@ -54,6 +54,22 @@ dev = ["pre-commit", "tox"]
 testing = ["coverage", "pytest", "pytest-benchmark"]
 
 [[package]]
+name = "pulp"
+version = "3.1.1"
+description = "PuLP is an LP modeler written in python. PuLP can generate MPS or LP files and call GLPK, COIN CLP/CBC, CPLEX, and GUROBI to solve linear problems."
+optional = false
+python-versions = ">=3.7"
+groups = ["main"]
+files = [
+    {file = "pulp-3.1.1-py3-none-any.whl", hash = "sha256:ad9d46afaf78a708270a2fa9b38e56536584c048dfbd7a6dbc719abee1051261"},
+    {file = "pulp-3.1.1.tar.gz", hash = "sha256:300a330e917c9ca9ac7fda6f5849bbf30d489c368117f197a3e3fd0bc1966d95"},
+]
+
+[package.extras]
+open-py = ["cylp", "highspy", "pyscipopt"]
+public-py = ["coptpy", "gurobipy", "xpress"]
+
+[[package]]
 name = "pytest"
 version = "8.3.5"
 description = "pytest: simple powerful testing with Python"
@@ -77,4 +93,4 @@ dev = ["argcomplete", "attrs (>=19.2)", "hypothesis (>=3.56)", "mock", "pygments
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.12"
-content-hash = "cf795f7fcedae9b7352ce692df1f445d001938acf3314898bafa2b4a462c0a51"
+content-hash = "6e9ee3aa9510ee887c35f21e5d8e9715333ab0945e12cd1499ceb33d66caca64"
